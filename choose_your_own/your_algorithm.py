@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
 
+
 features_train, labels_train, features_test, labels_test = makeTerrainData()
 
 
@@ -31,9 +32,36 @@ plt.show()
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
 
+#Adaboost
+# from sklearn.ensemble import AdaBoostClassifier
+#
+# clf = AdaBoostClassifier(n_estimators=70,learning_rate=.2)
+#
+# clf = clf.fit(features_train,labels_train)
+#
+# pred = clf.predict(features_test)
+#
+# print (clf.score(features_test,labels_test))
 
+#KNearestNeighbor wirh accuracy beating udacity
+# from sklearn.neighbors import KNeighborsClassifier
+#
+# clf = KNeighborsClassifier(n_neighbors=10,weights='distance' )
+#
+# clf = clf.fit(features_train,labels_train)
+#
+# pred = clf.predict(features_test)
+#
+# print (clf.score(features_test,labels_test))
 
+from sklearn.ensemble import RandomForestClassifier
 
+clf = RandomForestClassifier(n_estimators=70,min_samples_split=80)
+
+clf = clf.fit(features_train,labels_train)
+pred = clf.predict(features_test)
+
+print (clf.score(features_test,labels_test))
 
 
 
